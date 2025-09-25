@@ -1,152 +1,267 @@
-# data/ebay_synthetic_competitors.py
-from __future__ import annotations
-import re
-from statistics import mean
-from typing import Dict, List
-
-def _norm(s: str) -> List[str]:
-    return re.findall(r"[a-z0-9]+", s.lower())
-
-# A tiny synthetic catalog that *resembles* eBay search results.
-# Add more categories/variants as needed.
-_SYNTHETIC_LISTINGS: List[Dict] = [
-    # ---- Ceramic Mugs ----
+{
+  "platform": "etsy",
+  "competitors": [
     {
-        "category": "Home & Kitchen > Drinkware > Mugs",
-        "keywords": ["mug", "ceramic", "coffee", "stoneware", "handmade"],
-        "title": "Handmade Ceramic Coffee Mug 12oz – Stoneware Matte Glaze",
-        "price": 22.99,
-        "condition": "New",
-        "shipping": "Standard Shipping (3–5 business days)",
-        "seller_rating": 99.2,
-        "listing_type": "Buy It Now",
-        "bids": 0,
-        "item_specifics": {"Brand": "Artisan", "Material": "Ceramic", "Color": "Matte Black", "Capacity": "12 oz"},
+      "id": "synthetic-1",
+      "title": "Cozy Stoneware Tea Mug",
+      "price": 22.38,
+      "tags": [
+        "boho",
+        "gift",
+        "handmade"
+      ],
+      "short_description": "Cozy Stoneware Tea Mug made of stoneware with speckled finish.",
+      "rating": 3.63,
+      "sales_count": 371
     },
     {
-        "category": "Home & Kitchen > Drinkware > Mugs",
-        "keywords": ["mug", "ceramic", "coffee", "stoneware"],
-        "title": "Stoneware Coffee Mug – 14oz Rustic Speckled Finish",
-        "price": 19.50,
-        "condition": "New",
-        "shipping": "Free Economy Shipping",
-        "seller_rating": 98.7,
-        "listing_type": "Buy It Now",
-        "bids": 0,
-        "item_specifics": {"Brand": "HearthCo", "Material": "Stoneware", "Color": "Cream", "Capacity": "14 oz"},
+      "id": "synthetic-2",
+      "title": "Hand-thrown Speckled Coffee Cup",
+      "price": 43.1,
+      "tags": [
+        "gift",
+        "handmade",
+        "boho"
+      ],
+      "short_description": "Hand-thrown Speckled Coffee Cup made of stoneware with glossy finish.",
+      "rating": 3.76,
+      "sales_count": 247
     },
     {
-        "category": "Home & Kitchen > Drinkware > Mugs",
-        "keywords": ["mug", "ceramic", "coffee", "dishwasher", "microwave"],
-        "title": "Ceramic Coffee Mug – Dishwasher & Microwave Safe (11oz)",
-        "price": 16.95,
-        "condition": "New",
-        "shipping": "USPS First Class",
-        "seller_rating": 97.9,
-        "listing_type": "Buy It Now",
-        "bids": 0,
-        "item_specifics": {"Brand": "CafeDaily", "Material": "Ceramic", "Color": "White", "Capacity": "11 oz"},
+      "id": "synthetic-3",
+      "title": "Hand-thrown Rustic Clay Mug",
+      "price": 38.2,
+      "tags": [
+        "handmade",
+        "boho",
+        "coffee"
+      ],
+      "short_description": "Hand-thrown Rustic Clay Mug made of earthenware with matte finish.",
+      "rating": 4.03,
+      "sales_count": 399
     },
     {
-        "category": "Home & Kitchen > Drinkware > Mugs",
-        "keywords": ["mug", "ceramic", "coffee", "stoneware", "handmade", "set"],
-        "title": "Set of 2 Handmade Stoneware Mugs – 10oz Blue Reactive Glaze",
-        "price": 34.00,
-        "condition": "New",
-        "shipping": "Calculated at checkout",
-        "seller_rating": 99.0,
-        "listing_type": "Buy It Now",
-        "bids": 0,
-        "item_specifics": {"Brand": "KilnCollective", "Material": "Stoneware", "Color": "Blue", "Capacity": "10 oz"},
-    },
-
-    # ---- T-Shirts ----
-    {
-        "category": "Clothing, Shoes & Accessories > Men > T-Shirts",
-        "keywords": ["t-shirt", "tee", "cotton", "graphic", "unisex"],
-        "title": "Unisex Cotton Graphic Tee – Classic Fit (Black)",
-        "price": 14.99,
-        "condition": "New with tags",
-        "shipping": "Free Economy Shipping",
-        "seller_rating": 98.1,
-        "listing_type": "Buy It Now",
-        "bids": 0,
-        "item_specifics": {"Brand": "StreetPrints", "Material": "Cotton", "Color": "Black", "Size": "M"},
+      "id": "synthetic-4",
+      "title": "Vintage Stoneware Tea Mug",
+      "price": 14.8,
+      "tags": [
+        "ceramic",
+        "boho",
+        "handmade"
+      ],
+      "short_description": "Vintage Stoneware Tea Mug made of earthenware with matte finish.",
+      "rating": 4.79,
+      "sales_count": 400
     },
     {
-        "category": "Clothing, Shoes & Accessories > Women > T-Shirts",
-        "keywords": ["t-shirt", "tee", "cotton", "crewneck"],
-        "title": "Women’s Crewneck Cotton T-Shirt – Soft Touch",
-        "price": 12.50,
-        "condition": "New with tags",
-        "shipping": "Standard Shipping",
-        "seller_rating": 97.0,
-        "listing_type": "Buy It Now",
-        "bids": 0,
-        "item_specifics": {"Brand": "DailyBasics", "Material": "Cotton", "Color": "White", "Size": "S"},
-    },
-
-    # ---- Phone Cases ----
-    {
-        "category": "Cell Phones & Accessories > Cases, Covers & Skins",
-        "keywords": ["phone", "case", "iphone 14", "mag-safe", "protective"],
-        "title": "iPhone 14 Mag-Safe Protective Case – Matte Finish",
-        "price": 17.95,
-        "condition": "New",
-        "shipping": "USPS First Class",
-        "seller_rating": 99.4,
-        "listing_type": "Buy It Now",
-        "bids": 0,
-        "item_specifics": {"Brand": "ShieldFlex", "Model": "iPhone 14", "Color": "Clear", "Material": "TPU"},
+      "id": "synthetic-5",
+      "title": "Vintage Rustic Clay Mug",
+      "price": 30.14,
+      "tags": [
+        "gift",
+        "boho",
+        "coffee"
+      ],
+      "short_description": "Vintage Rustic Clay Mug made of earthenware with speckled finish.",
+      "rating": 4.63,
+      "sales_count": 118
     },
     {
-        "category": "Cell Phones & Accessories > Cases, Covers & Skins",
-        "keywords": ["phone", "case", "iphone", "shockproof", "cover"],
-        "title": "Shockproof Phone Case for iPhone – Transparent Corners",
-        "price": 13.49,
-        "condition": "New",
-        "shipping": "Free Economy Shipping",
-        "seller_rating": 98.6,
-        "listing_type": "Buy It Now",
-        "bids": 0,
-        "item_specifics": {"Brand": "ClearGuard", "Model": "iPhone 13/14", "Color": "Transparent", "Material": "TPU"},
+      "id": "synthetic-6",
+      "title": "Minimalist Handmade Ceramic Mug",
+      "price": 34.14,
+      "tags": [
+        "ceramic",
+        "handmade",
+        "kitchen"
+      ],
+      "short_description": "Minimalist Handmade Ceramic Mug made of earthenware with speckled finish.",
+      "rating": 4.95,
+      "sales_count": 383
     },
-]
-
-def fetch_competitors_for_query(query: str, top_k: int = 5) -> Dict:
-    """
-    Toy keyword match: score each listing by overlap with normalized query tokens.
-    Returns a dict compatible with agents: {"competitors": [...], "avg_price": float}
-    """
-    q_tokens = set(_norm(query))
-    scored: List[Dict] = []
-    for row in _SYNTHETIC_LISTINGS:
-        score = len(q_tokens.intersection(set(row["keywords"]) | set(_norm(row["title"]))))
-        if score > 0:
-            scored.append((score, row))
-
-    # Sort by score desc, then by seller_rating desc as a tiebreaker
-    scored.sort(key=lambda x: (x[0], x[1]["seller_rating"]), reverse=True)
-    top = [r for _, r in scored[:top_k]]
-
-    if not top:
-        return {"competitors": [], "avg_price": None}
-
-    avg_price = round(mean([t["price"] for t in top]), 2)
-
-    # Return only eBay-like fields your agent actually uses + some extras for realism
-    competitors = [
-        {
-            "title": t["title"],
-            "price": t["price"],
-            "condition": t["condition"],
-            "shipping": t["shipping"],
-            "seller_rating": t["seller_rating"],
-            "listing_type": t["listing_type"],
-            "bids": t["bids"],
-            "item_specifics": t["item_specifics"],
-            "category": t["category"],
-        }
-        for t in top
-    ]
-    return {"competitors": competitors, "avg_price": avg_price}
+    {
+      "id": "synthetic-7",
+      "title": "Vintage Glazed Pottery Mug",
+      "price": 17.65,
+      "tags": [
+        "minimalist",
+        "ceramic",
+        "handmade"
+      ],
+      "short_description": "Vintage Glazed Pottery Mug made of stoneware with glossy finish.",
+      "rating": 4.06,
+      "sales_count": 78
+    },
+    {
+      "id": "synthetic-8",
+      "title": "Hand-thrown Rustic Clay Mug",
+      "price": 36.15,
+      "tags": [
+        "kitchen",
+        "gift",
+        "minimalist"
+      ],
+      "short_description": "Hand-thrown Rustic Clay Mug made of stoneware with speckled finish.",
+      "rating": 4.89,
+      "sales_count": 256
+    },
+    {
+      "id": "synthetic-9",
+      "title": "Boho Stoneware Tea Mug",
+      "price": 43.77,
+      "tags": [
+        "coffee",
+        "minimalist",
+        "handmade"
+      ],
+      "short_description": "Boho Stoneware Tea Mug made of ceramic with glossy finish.",
+      "rating": 4.47,
+      "sales_count": 415
+    },
+    {
+      "id": "synthetic-10",
+      "title": "Vintage Rustic Clay Mug",
+      "price": 31.27,
+      "tags": [
+        "minimalist",
+        "ceramic",
+        "gift"
+      ],
+      "short_description": "Vintage Rustic Clay Mug made of stoneware with glossy finish.",
+      "rating": 4.43,
+      "sales_count": 54
+    },
+    {
+      "id": "synthetic-11",
+      "title": "Minimalist Glazed Pottery Mug",
+      "price": 44.85,
+      "tags": [
+        "kitchen",
+        "handmade",
+        "minimalist"
+      ],
+      "short_description": "Minimalist Glazed Pottery Mug made of earthenware with glossy finish.",
+      "rating": 4.73,
+      "sales_count": 166
+    },
+    {
+      "id": "synthetic-12",
+      "title": "Vintage Speckled Coffee Cup",
+      "price": 41.93,
+      "tags": [
+        "gift",
+        "ceramic",
+        "kitchen"
+      ],
+      "short_description": "Vintage Speckled Coffee Cup made of ceramic with glossy finish.",
+      "rating": 3.53,
+      "sales_count": 491
+    },
+    {
+      "id": "synthetic-13",
+      "title": "Boho Stoneware Tea Mug",
+      "price": 42.23,
+      "tags": [
+        "ceramic",
+        "gift",
+        "minimalist"
+      ],
+      "short_description": "Boho Stoneware Tea Mug made of ceramic with speckled finish.",
+      "rating": 3.99,
+      "sales_count": 421
+    },
+    {
+      "id": "synthetic-14",
+      "title": "Vintage Handmade Ceramic Mug",
+      "price": 43.81,
+      "tags": [
+        "minimalist",
+        "ceramic",
+        "boho"
+      ],
+      "short_description": "Vintage Handmade Ceramic Mug made of porcelain with speckled finish.",
+      "rating": 4.31,
+      "sales_count": 160
+    },
+    {
+      "id": "synthetic-15",
+      "title": "Boho Rustic Clay Mug",
+      "price": 29.93,
+      "tags": [
+        "minimalist",
+        "coffee",
+        "gift"
+      ],
+      "short_description": "Boho Rustic Clay Mug made of earthenware with speckled finish.",
+      "rating": 4.11,
+      "sales_count": 245
+    },
+    {
+      "id": "synthetic-16",
+      "title": "Eco-friendly Stoneware Tea Mug",
+      "price": 39.99,
+      "tags": [
+        "minimalist",
+        "gift",
+        "ceramic"
+      ],
+      "short_description": "Eco-friendly Stoneware Tea Mug made of stoneware with speckled finish.",
+      "rating": 4.85,
+      "sales_count": 415
+    },
+    {
+      "id": "synthetic-17",
+      "title": "Eco-friendly Rustic Clay Mug",
+      "price": 42.86,
+      "tags": [
+        "gift",
+        "kitchen",
+        "coffee"
+      ],
+      "short_description": "Eco-friendly Rustic Clay Mug made of porcelain with matte finish.",
+      "rating": 4.32,
+      "sales_count": 191
+    },
+    {
+      "id": "synthetic-18",
+      "title": "Eco-friendly Stoneware Tea Mug",
+      "price": 22.35,
+      "tags": [
+        "coffee",
+        "minimalist",
+        "kitchen"
+      ],
+      "short_description": "Eco-friendly Stoneware Tea Mug made of earthenware with matte finish.",
+      "rating": 3.97,
+      "sales_count": 439
+    },
+    {
+      "id": "synthetic-19",
+      "title": "Vintage Glazed Pottery Mug",
+      "price": 37.26,
+      "tags": [
+        "handmade",
+        "minimalist",
+        "boho"
+      ],
+      "short_description": "Vintage Glazed Pottery Mug made of earthenware with glossy finish.",
+      "rating": 3.99,
+      "sales_count": 211
+    },
+    {
+      "id": "synthetic-20",
+      "title": "Vintage Rustic Clay Mug",
+      "price": 33.08,
+      "tags": [
+        "handmade",
+        "kitchen",
+        "boho"
+      ],
+      "short_description": "Vintage Rustic Clay Mug made of ceramic with glossy finish.",
+      "rating": 4.97,
+      "sales_count": 159
+    }
+  ],
+  "avg_price": 34.49,
+  "source": "synthetic-demo"
+}
