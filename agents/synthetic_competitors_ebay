@@ -1,0 +1,152 @@
+# data/ebay_synthetic_competitors.py
+from __future__ import annotations
+import re
+from statistics import mean
+from typing import Dict, List
+
+def _norm(s: str) -> List[str]:
+    return re.findall(r"[a-z0-9]+", s.lower())
+
+# A tiny synthetic catalog that *resembles* eBay search results.
+# Add more categories/variants as needed.
+_SYNTHETIC_LISTINGS: List[Dict] = [
+    # ---- Ceramic Mugs ----
+    {
+        "category": "Home & Kitchen > Drinkware > Mugs",
+        "keywords": ["mug", "ceramic", "coffee", "stoneware", "handmade"],
+        "title": "Handmade Ceramic Coffee Mug 12oz – Stoneware Matte Glaze",
+        "price": 22.99,
+        "condition": "New",
+        "shipping": "Standard Shipping (3–5 business days)",
+        "seller_rating": 99.2,
+        "listing_type": "Buy It Now",
+        "bids": 0,
+        "item_specifics": {"Brand": "Artisan", "Material": "Ceramic", "Color": "Matte Black", "Capacity": "12 oz"},
+    },
+    {
+        "category": "Home & Kitchen > Drinkware > Mugs",
+        "keywords": ["mug", "ceramic", "coffee", "stoneware"],
+        "title": "Stoneware Coffee Mug – 14oz Rustic Speckled Finish",
+        "price": 19.50,
+        "condition": "New",
+        "shipping": "Free Economy Shipping",
+        "seller_rating": 98.7,
+        "listing_type": "Buy It Now",
+        "bids": 0,
+        "item_specifics": {"Brand": "HearthCo", "Material": "Stoneware", "Color": "Cream", "Capacity": "14 oz"},
+    },
+    {
+        "category": "Home & Kitchen > Drinkware > Mugs",
+        "keywords": ["mug", "ceramic", "coffee", "dishwasher", "microwave"],
+        "title": "Ceramic Coffee Mug – Dishwasher & Microwave Safe (11oz)",
+        "price": 16.95,
+        "condition": "New",
+        "shipping": "USPS First Class",
+        "seller_rating": 97.9,
+        "listing_type": "Buy It Now",
+        "bids": 0,
+        "item_specifics": {"Brand": "CafeDaily", "Material": "Ceramic", "Color": "White", "Capacity": "11 oz"},
+    },
+    {
+        "category": "Home & Kitchen > Drinkware > Mugs",
+        "keywords": ["mug", "ceramic", "coffee", "stoneware", "handmade", "set"],
+        "title": "Set of 2 Handmade Stoneware Mugs – 10oz Blue Reactive Glaze",
+        "price": 34.00,
+        "condition": "New",
+        "shipping": "Calculated at checkout",
+        "seller_rating": 99.0,
+        "listing_type": "Buy It Now",
+        "bids": 0,
+        "item_specifics": {"Brand": "KilnCollective", "Material": "Stoneware", "Color": "Blue", "Capacity": "10 oz"},
+    },
+
+    # ---- T-Shirts ----
+    {
+        "category": "Clothing, Shoes & Accessories > Men > T-Shirts",
+        "keywords": ["t-shirt", "tee", "cotton", "graphic", "unisex"],
+        "title": "Unisex Cotton Graphic Tee – Classic Fit (Black)",
+        "price": 14.99,
+        "condition": "New with tags",
+        "shipping": "Free Economy Shipping",
+        "seller_rating": 98.1,
+        "listing_type": "Buy It Now",
+        "bids": 0,
+        "item_specifics": {"Brand": "StreetPrints", "Material": "Cotton", "Color": "Black", "Size": "M"},
+    },
+    {
+        "category": "Clothing, Shoes & Accessories > Women > T-Shirts",
+        "keywords": ["t-shirt", "tee", "cotton", "crewneck"],
+        "title": "Women’s Crewneck Cotton T-Shirt – Soft Touch",
+        "price": 12.50,
+        "condition": "New with tags",
+        "shipping": "Standard Shipping",
+        "seller_rating": 97.0,
+        "listing_type": "Buy It Now",
+        "bids": 0,
+        "item_specifics": {"Brand": "DailyBasics", "Material": "Cotton", "Color": "White", "Size": "S"},
+    },
+
+    # ---- Phone Cases ----
+    {
+        "category": "Cell Phones & Accessories > Cases, Covers & Skins",
+        "keywords": ["phone", "case", "iphone 14", "mag-safe", "protective"],
+        "title": "iPhone 14 Mag-Safe Protective Case – Matte Finish",
+        "price": 17.95,
+        "condition": "New",
+        "shipping": "USPS First Class",
+        "seller_rating": 99.4,
+        "listing_type": "Buy It Now",
+        "bids": 0,
+        "item_specifics": {"Brand": "ShieldFlex", "Model": "iPhone 14", "Color": "Clear", "Material": "TPU"},
+    },
+    {
+        "category": "Cell Phones & Accessories > Cases, Covers & Skins",
+        "keywords": ["phone", "case", "iphone", "shockproof", "cover"],
+        "title": "Shockproof Phone Case for iPhone – Transparent Corners",
+        "price": 13.49,
+        "condition": "New",
+        "shipping": "Free Economy Shipping",
+        "seller_rating": 98.6,
+        "listing_type": "Buy It Now",
+        "bids": 0,
+        "item_specifics": {"Brand": "ClearGuard", "Model": "iPhone 13/14", "Color": "Transparent", "Material": "TPU"},
+    },
+]
+
+def fetch_competitors_for_query(query: str, top_k: int = 5) -> Dict:
+    """
+    Toy keyword match: score each listing by overlap with normalized query tokens.
+    Returns a dict compatible with agents: {"competitors": [...], "avg_price": float}
+    """
+    q_tokens = set(_norm(query))
+    scored: List[Dict] = []
+    for row in _SYNTHETIC_LISTINGS:
+        score = len(q_tokens.intersection(set(row["keywords"]) | set(_norm(row["title"]))))
+        if score > 0:
+            scored.append((score, row))
+
+    # Sort by score desc, then by seller_rating desc as a tiebreaker
+    scored.sort(key=lambda x: (x[0], x[1]["seller_rating"]), reverse=True)
+    top = [r for _, r in scored[:top_k]]
+
+    if not top:
+        return {"competitors": [], "avg_price": None}
+
+    avg_price = round(mean([t["price"] for t in top]), 2)
+
+    # Return only eBay-like fields your agent actually uses + some extras for realism
+    competitors = [
+        {
+            "title": t["title"],
+            "price": t["price"],
+            "condition": t["condition"],
+            "shipping": t["shipping"],
+            "seller_rating": t["seller_rating"],
+            "listing_type": t["listing_type"],
+            "bids": t["bids"],
+            "item_specifics": t["item_specifics"],
+            "category": t["category"],
+        }
+        for t in top
+    ]
+    return {"competitors": competitors, "avg_price": avg_price}
