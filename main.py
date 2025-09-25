@@ -4,7 +4,7 @@ from fastapi import FastAPI, UploadFile, Form
 from pydantic import BaseModel
 from typing import Optional
 from models.product import Product
-from agents.competitor import CompetitorResearchAgent
+from agents.competitor_search.base import CompetitorResearchAgent
 from agents.etsy import EtsyAgent
 # from agents.ebay import EbayAgent
 # from agents.shopify import ShopifyAgent
@@ -51,7 +51,7 @@ async def ingest_image(file: UploadFile):
     return {"filename": file.filename}
 
 # Optimize listings
-competitor_agent = CompetitorResearchAgent()
+competitor_agent = CompetitorResearchAgent(platform="etsy")
 etsy_agent = EtsyAgent()
 # ebay_agent = EbayAgent()
 # shopify_agent = ShopifyAgent()

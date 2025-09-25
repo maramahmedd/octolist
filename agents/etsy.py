@@ -12,8 +12,19 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 class EtsyAgent(BaseAgent):
-    def optimize(self, product: Product, competitors: dict) -> Listing:
+    def optimize(self, product: Product, competitors: dict = None) -> Listing:
+        # -------------------------------
+        # DEMO MODE: load synthetic competitors
+        # Comment this block out later when using real scraper/API
+        if competitors is None:
+            with open("data/synthetic_competitors_etsy.json", "r", encoding="utf-8") as f:
+                competitors = json.load(f)
+        # -------------------------------
+                
         # Build competitor summary
+        if "competitors" not in competitors:
+            raise ValueError(f"No competitor data returned: {competitors}")
+
         comp_titles = [c["title"] for c in competitors["competitors"]]
         avg_price = competitors["avg_price"]
 
@@ -36,6 +47,12 @@ class EtsyAgent(BaseAgent):
           "suggested_price": 0.00
         }
         """
+        
+        # NEW: feed competitor details, not just titles
+        competitor_summary = "\n".join(
+            [f"- {c['title']} (${c['price']}), tags: {', '.join(c['tags'])}" 
+             for c in competitors["competitors"][:5]]
+        )
 
         user_prompt = f"""
         Product Info:
@@ -44,8 +61,9 @@ class EtsyAgent(BaseAgent):
         Price (if provided): {product.price}
 
         Competitors:
-        Titles: {comp_titles}
         Avg Price: {avg_price}
+        Top Competitors:
+        {competitor_summary}
 
         Please return a fully optimized Etsy listing.
         """

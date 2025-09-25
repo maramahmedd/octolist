@@ -1,0 +1,267 @@
+{
+  "platform": "etsy",
+  "competitors": [
+    {
+      "id": "synthetic-1",
+      "title": "Cozy Stoneware Tea Mug",
+      "price": 22.38,
+      "tags": [
+        "boho",
+        "gift",
+        "handmade"
+      ],
+      "short_description": "Cozy Stoneware Tea Mug made of stoneware with speckled finish.",
+      "rating": 3.63,
+      "sales_count": 371
+    },
+    {
+      "id": "synthetic-2",
+      "title": "Hand-thrown Speckled Coffee Cup",
+      "price": 43.1,
+      "tags": [
+        "gift",
+        "handmade",
+        "boho"
+      ],
+      "short_description": "Hand-thrown Speckled Coffee Cup made of stoneware with glossy finish.",
+      "rating": 3.76,
+      "sales_count": 247
+    },
+    {
+      "id": "synthetic-3",
+      "title": "Hand-thrown Rustic Clay Mug",
+      "price": 38.2,
+      "tags": [
+        "handmade",
+        "boho",
+        "coffee"
+      ],
+      "short_description": "Hand-thrown Rustic Clay Mug made of earthenware with matte finish.",
+      "rating": 4.03,
+      "sales_count": 399
+    },
+    {
+      "id": "synthetic-4",
+      "title": "Vintage Stoneware Tea Mug",
+      "price": 14.8,
+      "tags": [
+        "ceramic",
+        "boho",
+        "handmade"
+      ],
+      "short_description": "Vintage Stoneware Tea Mug made of earthenware with matte finish.",
+      "rating": 4.79,
+      "sales_count": 400
+    },
+    {
+      "id": "synthetic-5",
+      "title": "Vintage Rustic Clay Mug",
+      "price": 30.14,
+      "tags": [
+        "gift",
+        "boho",
+        "coffee"
+      ],
+      "short_description": "Vintage Rustic Clay Mug made of earthenware with speckled finish.",
+      "rating": 4.63,
+      "sales_count": 118
+    },
+    {
+      "id": "synthetic-6",
+      "title": "Minimalist Handmade Ceramic Mug",
+      "price": 34.14,
+      "tags": [
+        "ceramic",
+        "handmade",
+        "kitchen"
+      ],
+      "short_description": "Minimalist Handmade Ceramic Mug made of earthenware with speckled finish.",
+      "rating": 4.95,
+      "sales_count": 383
+    },
+    {
+      "id": "synthetic-7",
+      "title": "Vintage Glazed Pottery Mug",
+      "price": 17.65,
+      "tags": [
+        "minimalist",
+        "ceramic",
+        "handmade"
+      ],
+      "short_description": "Vintage Glazed Pottery Mug made of stoneware with glossy finish.",
+      "rating": 4.06,
+      "sales_count": 78
+    },
+    {
+      "id": "synthetic-8",
+      "title": "Hand-thrown Rustic Clay Mug",
+      "price": 36.15,
+      "tags": [
+        "kitchen",
+        "gift",
+        "minimalist"
+      ],
+      "short_description": "Hand-thrown Rustic Clay Mug made of stoneware with speckled finish.",
+      "rating": 4.89,
+      "sales_count": 256
+    },
+    {
+      "id": "synthetic-9",
+      "title": "Boho Stoneware Tea Mug",
+      "price": 43.77,
+      "tags": [
+        "coffee",
+        "minimalist",
+        "handmade"
+      ],
+      "short_description": "Boho Stoneware Tea Mug made of ceramic with glossy finish.",
+      "rating": 4.47,
+      "sales_count": 415
+    },
+    {
+      "id": "synthetic-10",
+      "title": "Vintage Rustic Clay Mug",
+      "price": 31.27,
+      "tags": [
+        "minimalist",
+        "ceramic",
+        "gift"
+      ],
+      "short_description": "Vintage Rustic Clay Mug made of stoneware with glossy finish.",
+      "rating": 4.43,
+      "sales_count": 54
+    },
+    {
+      "id": "synthetic-11",
+      "title": "Minimalist Glazed Pottery Mug",
+      "price": 44.85,
+      "tags": [
+        "kitchen",
+        "handmade",
+        "minimalist"
+      ],
+      "short_description": "Minimalist Glazed Pottery Mug made of earthenware with glossy finish.",
+      "rating": 4.73,
+      "sales_count": 166
+    },
+    {
+      "id": "synthetic-12",
+      "title": "Vintage Speckled Coffee Cup",
+      "price": 41.93,
+      "tags": [
+        "gift",
+        "ceramic",
+        "kitchen"
+      ],
+      "short_description": "Vintage Speckled Coffee Cup made of ceramic with glossy finish.",
+      "rating": 3.53,
+      "sales_count": 491
+    },
+    {
+      "id": "synthetic-13",
+      "title": "Boho Stoneware Tea Mug",
+      "price": 42.23,
+      "tags": [
+        "ceramic",
+        "gift",
+        "minimalist"
+      ],
+      "short_description": "Boho Stoneware Tea Mug made of ceramic with speckled finish.",
+      "rating": 3.99,
+      "sales_count": 421
+    },
+    {
+      "id": "synthetic-14",
+      "title": "Vintage Handmade Ceramic Mug",
+      "price": 43.81,
+      "tags": [
+        "minimalist",
+        "ceramic",
+        "boho"
+      ],
+      "short_description": "Vintage Handmade Ceramic Mug made of porcelain with speckled finish.",
+      "rating": 4.31,
+      "sales_count": 160
+    },
+    {
+      "id": "synthetic-15",
+      "title": "Boho Rustic Clay Mug",
+      "price": 29.93,
+      "tags": [
+        "minimalist",
+        "coffee",
+        "gift"
+      ],
+      "short_description": "Boho Rustic Clay Mug made of earthenware with speckled finish.",
+      "rating": 4.11,
+      "sales_count": 245
+    },
+    {
+      "id": "synthetic-16",
+      "title": "Eco-friendly Stoneware Tea Mug",
+      "price": 39.99,
+      "tags": [
+        "minimalist",
+        "gift",
+        "ceramic"
+      ],
+      "short_description": "Eco-friendly Stoneware Tea Mug made of stoneware with speckled finish.",
+      "rating": 4.85,
+      "sales_count": 415
+    },
+    {
+      "id": "synthetic-17",
+      "title": "Eco-friendly Rustic Clay Mug",
+      "price": 42.86,
+      "tags": [
+        "gift",
+        "kitchen",
+        "coffee"
+      ],
+      "short_description": "Eco-friendly Rustic Clay Mug made of porcelain with matte finish.",
+      "rating": 4.32,
+      "sales_count": 191
+    },
+    {
+      "id": "synthetic-18",
+      "title": "Eco-friendly Stoneware Tea Mug",
+      "price": 22.35,
+      "tags": [
+        "coffee",
+        "minimalist",
+        "kitchen"
+      ],
+      "short_description": "Eco-friendly Stoneware Tea Mug made of earthenware with matte finish.",
+      "rating": 3.97,
+      "sales_count": 439
+    },
+    {
+      "id": "synthetic-19",
+      "title": "Vintage Glazed Pottery Mug",
+      "price": 37.26,
+      "tags": [
+        "handmade",
+        "minimalist",
+        "boho"
+      ],
+      "short_description": "Vintage Glazed Pottery Mug made of earthenware with glossy finish.",
+      "rating": 3.99,
+      "sales_count": 211
+    },
+    {
+      "id": "synthetic-20",
+      "title": "Vintage Rustic Clay Mug",
+      "price": 33.08,
+      "tags": [
+        "handmade",
+        "kitchen",
+        "boho"
+      ],
+      "short_description": "Vintage Rustic Clay Mug made of ceramic with glossy finish.",
+      "rating": 4.97,
+      "sales_count": 159
+    }
+  ],
+  "avg_price": 34.49,
+  "source": "synthetic-demo"
+}
